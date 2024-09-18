@@ -34,10 +34,10 @@ FROM alpine
 # RUN mkdir /logs
 # RUN chmod 0755 /logs
 
-WORKDIR /
+WORKDIR /app
 # COPY --from=rita-builder /go/src/github.com/activecm/rita/config.hjson /etc/rita/config.hjson
-COPY --from=rita-builder /go/src/github.com/activecm/rita/rita /rita
+COPY --from=rita-builder /go/src/github.com/activecm/rita/rita /app/rita
 # COPY --from=rita-builder /go/src/github.com/activecm/rita/.env.production /.env
 # COPY --from=rita-builder /go/src/github.com/activecm/rita/deployment /etc/rita
 
-ENTRYPOINT ["/rita"]
+ENTRYPOINT ["/app/rita"]
